@@ -78,3 +78,6 @@ DerivedDataCache/*
 
 #StarterContent
 Content/BaseContent/StarterContent/*
+
+#TempVSFiles
+enc_temp_folder/*

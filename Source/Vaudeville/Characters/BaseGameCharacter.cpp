@@ -26,10 +26,5 @@ void ABaseGameCharacter::Tick(float DeltaTime)
 
 }
 
-// Called to bind functionality to input
-void ABaseGameCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-}
 

@@ -13,7 +13,10 @@ class AVaudevilleGameMode : public AGameModeBase
 
 public:
 	AVaudevilleGameMode();
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<APawn> StartingPawn;
+
+	
+
 };
-
-
-

@@ -51,5 +51,16 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FirstPersonCameraComponent;
 
+	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Camera)
+	float BaseTurnRate;
+
+	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Camera)
+	float BaseLookUpRate;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	class USkeletalMeshComponent* FirstPersonMesh;
+
 	APlayerGameCharacter();
 };

@@ -1,11 +1,21 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "PlayerGameCharacter.h"
-
+#include "Animation/AnimInstance.h"
+#include "Camera/CameraComponent.h"
+#include "Components/CapsuleComponent.h"
 
 APlayerGameCharacter::APlayerGameCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
+
+	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoomComponent"));
+	CameraBoom->SetupAttachment(GetCapsuleComponent());
+	CameraBoom->bUsePawnControlRotation = true;
+	FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
+	FirstPersonCameraComponent->SetupAttachment(CameraBoom);
+	FirstPersonMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FirstPersonMesh"));
+	FirstPersonMesh->SetupAttachment(FirstPersonCameraComponent);
 }
 
 void APlayerGameCharacter::BeginPlay()
@@ -14,12 +24,10 @@ void APlayerGameCharacter::BeginPlay()
 
 	if(CameraBoom)
 	{
-		CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoomComponent"));
 	}
 	if (FirstPersonCameraComponent)
 	{
-		FirstPersonCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
-		FirstPersonCameraComponent->SetupAttachment(CameraBoom);
+	
 	}
 }
 

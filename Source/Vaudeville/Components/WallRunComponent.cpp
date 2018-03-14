@@ -32,30 +32,36 @@ void UWallRunComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	FCollisionQueryParams QueryParams;
-	QueryParams.AddIgnoredActor(GetOwner());
-
-	FHitResult Hit;
-	FVector StartPoint = GetOwner()->GetActorLocation();
-	FVector EndPoint = GetOwner()->GetActorLocation() + GetOwner()->GetActorForwardVector()* WallClimbCheckDistance;
-	if(GetWorld()->LineTraceSingleByChannel(Hit,StartPoint,EndPoint,ECC_Visibility))
+	ABaseGameCharacter* Character = Cast<ABaseGameCharacter>(GetOwner());
+	if (Character)
 	{
-		if (CVarWallRunDebug->GetInt() == 1)
-		{
-			DrawDebugPoint(GetWorld(), Hit.Location, 20, FColor::Red, false, 0.3);
+		FCollisionQueryParams QueryParams;
+		QueryParams.AddIgnoredActor(Character);
 
-			if (GEngine)
+		FHitResult Hit;
+		FVector StartPoint = Character->GetActorLocation();
+		FVector EndPoint = GetOwner()->GetActorLocation() + GetOwner()->GetActorForwardVector()* WallClimbCheckDistance;
+		if (GetWorld()->LineTraceSingleByChannel(Hit, StartPoint, EndPoint, ECC_Visibility))
+		{
+			if (CVarWallRunDebug->GetInt() == 1)
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 0, FColor::Yellow, Hit.GetActor()->GetName());
+				DrawDebugPoint(GetWorld(), Hit.Location, 20, FColor::Red, false, 0.3);
+
+				if (GEngine)
+				{
+					GEngine->AddOnScreenDebugMessage(-1, 0, FColor::Yellow, Hit.GetActor()->GetName());
+				}
 			}
-		}
 
-		if(Hit.Distance< WallClimbBufferDistance)
-		{
-			ABaseGameCharacter* Character = Cast<ABaseGameCharacter>(GetOwner());
-			if(Character)
+			if (Hit.Distance < WallClimbBufferDistance)
 			{
-				Character->LaunchCharacter(FVector(0, 0, 350), true, true);
+				FVector UnitVelocity = Character->GetVelocity().GetSafeNormal();
+				if(FVector::DotProduct(UnitVelocity,FVector::UpVector)>0)
+				{
+					Character->LaunchCharacter(FVector(0, 0, 350), true, true);
+				}
+
+
 			}
 		}
 	}

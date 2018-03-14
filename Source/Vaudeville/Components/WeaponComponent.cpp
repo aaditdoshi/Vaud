@@ -19,6 +19,12 @@ void UWeaponComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
+	EquippedWeapon = Cast<AWeapon>(GetWorld()->SpawnActor(WeaponType));
+	if(EquippedWeapon)
+	{
+		EquippedWeapon->SetOwner(GetOwner());
+		EquippedWeapon->OnEquipped();
+	}
 	// ...
 	
 }
@@ -30,5 +36,70 @@ void UWeaponComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
+}
+
+void UWeaponComponent::OnFire()
+{
+	if(EquippedWeapon)
+	{
+		EquippedWeapon->OnFire();
+	}
+}
+
+void UWeaponComponent::OnFireStopped()
+{
+	if (EquippedWeapon)
+	{
+		EquippedWeapon->OnFireStopped();
+	}
+}
+
+AWeapon* UWeaponComponent::GetEquippedWeapon()
+{
+		if(EquippedWeapon)
+		{
+
+			return EquippedWeapon;
+		}
+
+	return nullptr;
+}
+
+bool UWeaponComponent::TryReload()
+{
+	if (EquippedWeapon)
+	{
+		if(EquippedWeapon->CanReload())
+		{
+			EquippedWeapon->OnReloadFinished.AddDynamic(this,&UWeaponComponent::HandleReloadFinishedCallBack);
+			EquippedWeapon->StartReload();
+			return true;
+		}
+	}
+	return false;
+}
+
+
+bool UWeaponComponent::IsReloading()
+{
+	if(EquippedWeapon)
+	{
+		return EquippedWeapon->IsReloading();
+	}
+
+	return false;
+}
+
+void UWeaponComponent::OnReloadComplete_Implementation()
+{
+	if (GEngine)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("ReloadComplete"));
+	}
+}
+
+void UWeaponComponent::HandleReloadFinishedCallBack()
+{
+	OnReloadComplete();
 }
 

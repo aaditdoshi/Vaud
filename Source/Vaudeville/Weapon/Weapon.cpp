@@ -72,7 +72,7 @@ bool AWeapon::CanReload()
 	}
 }
 
-void AWeapon::StartReload()
+void AWeapon::StartReload_Implementation()
 {
 	CurrentlyReloading = true;
 }
@@ -90,4 +90,3 @@ void AWeapon::FinishReloading()
 		OnReloadFinished.Broadcast();
 	}
 }
-

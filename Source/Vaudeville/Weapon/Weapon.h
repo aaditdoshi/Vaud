@@ -19,8 +19,9 @@ public:
 	AWeapon();
 
 	/** Gun mesh: 1st person view (seen only by self) */
-	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = Mesh)
 	USkeletalMeshComponent* WeaponMesh;
+
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Ammo")
 	float TimeToReload = 1;
@@ -50,11 +51,15 @@ public:
 
 	bool CanReload();
 
+	UFUNCTION(BlueprintNativeEvent, Category = "Reload")
 	void StartReload();
+
+	void StartReload_Implementation();
 
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
 	bool IsReloading();
 
+	UFUNCTION(BlueprintCallable, Category = "Weapon")
 	void FinishReloading();
 
 	FOnReloadFinished OnReloadFinished;

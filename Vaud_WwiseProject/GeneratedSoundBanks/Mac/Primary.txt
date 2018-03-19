@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	845680474	AKEvent_LaunchArrow			\Default Work Unit\AKEvent_LaunchArrow	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	228721763	Bow_Launch_Arrow	D:\GameProjects\Vaud\Vaud_WwiseProject\.cache\Mac\SFX\Bow_Launch_Arrow_1C9C67B2.wem		\Actor-Mixer Hierarchy\Default Work Unit\ArrowLaunchSound\Bow_Launch_Arrow		94716
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="11" SoundbankVersion="128">
+	<RootPaths>
+		<ProjectRoot>D:\GameProjects\Vaud\Vaud_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>D:\GameProjects\Vaud\Vaud_WwiseProject\.cache\Mac\</SourceFilesRoot>
+		<SoundBanksRoot>D:\GameProjects\Vaud\Vaud_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>D:\GameProjects\Vaud\Vaud_WwiseProject\GeneratedSoundBanks\Mac\</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="4181794693" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\Primary</ObjectPath>
+			<ShortName>Primary</ShortName>
+			<Path>Primary.bnk</Path>
+			<IncludedEvents>
+				<Event Id="845680474" Name="AKEvent_LaunchArrow" ObjectPath="\Events\Default Work Unit\AKEvent_LaunchArrow"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="228721763" Language="SFX">
+					<ShortName>Bow_Launch_Arrow.wav</ShortName>
+					<Path>SFX\Bow_Launch_Arrow_1C9C67B2.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

@@ -8,6 +8,9 @@
 #include "WeaponComponent.generated.h"
 
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnReloadComplete, AWeapon*, ReloadedWeapon);
+
+
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class VAUDEVILLE_API UWeaponComponent : public UActorComponent
 {
@@ -43,10 +46,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool IsReloading();
 
-	UFUNCTION(BlueprintNativeEvent, Category = "Reload")
-	void OnReloadComplete();
-
-	void OnReloadComplete_Implementation();
+	UPROPERTY(BlueprintAssignable, Category = "Reload")
+	FOnReloadComplete OnReloadComplete;
 
 	UFUNCTION()
 	void HandleReloadFinishedCallBack();

@@ -17,14 +17,15 @@ UWeaponComponent::UWeaponComponent()
 // Called when the game starts
 void UWeaponComponent::BeginPlay()
 {
+	FActorSpawnParameters spawnparams;
+	spawnparams.Owner = GetOwner();
 	Super::BeginPlay();
-
-	EquippedWeapon = Cast<AWeapon>(GetWorld()->SpawnActor(WeaponType));
-	if(EquippedWeapon)
+	EquippedWeapon = Cast<AWeapon>(GetWorld()->SpawnActor<AWeapon>(WeaponType,spawnparams));
+	if (EquippedWeapon)
 	{
-		EquippedWeapon->SetOwner(GetOwner());
 		EquippedWeapon->OnEquipped();
 	}
+	
 	// ...
 	
 }
@@ -90,16 +91,8 @@ bool UWeaponComponent::IsReloading()
 	return false;
 }
 
-void UWeaponComponent::OnReloadComplete_Implementation()
-{
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("ReloadComplete"));
-	}
-}
-
 void UWeaponComponent::HandleReloadFinishedCallBack()
 {
-	OnReloadComplete();
+	OnReloadComplete.Broadcast(EquippedWeapon);
 }
 

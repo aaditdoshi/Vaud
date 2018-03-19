@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{13F84A92-D5FE-4E25-A93C-DE82DFF7A830}" SchemaVersion="85">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{13F84A92-D5FE-4E25-A93C-DE82DFF7A830}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{13F84A92-D5FE-4E25-A93C-DE82DFF7A830}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="AKEvent_LaunchArrow" ID="{9222AFD1-2EEE-48F5-91EE-845C8C4B20D5}">
+					<ChildrenList>
+						<Action Name="" ID="{ECC93999-15D1-40AD-8078-53FD24CADC56}" ShortID="878074088">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ArrowLaunchSound" ID="{1FC51C9B-866A-41C8-B1EB-B85A246926BB}" WorkUnitID="{CF693F05-4520-4F5E-BAC8-15BDDD4E1B41}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

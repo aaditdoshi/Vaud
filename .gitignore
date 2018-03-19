@@ -84,3 +84,6 @@ enc_temp_folder/*
 
 #Animation Starter Content
 Content/BaseContent/AnimStarterPack/*
+Content/FirstPersonArchery/*
+Content/FirstPersonBPIronbelly/*
+Content/IBWP3DBowPackageFPS/*

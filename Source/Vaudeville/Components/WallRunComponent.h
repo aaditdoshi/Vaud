@@ -29,4 +29,7 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float WallClimbBufferDistance = 40;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float VerticalLaunchVelocity = 350;
 };

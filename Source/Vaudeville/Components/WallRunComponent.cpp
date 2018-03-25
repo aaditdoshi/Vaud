@@ -58,7 +58,7 @@ void UWallRunComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 				FVector UnitVelocity = Character->GetVelocity().GetSafeNormal();
 				if(FVector::DotProduct(UnitVelocity,FVector::UpVector)>0)
 				{
-					Character->LaunchCharacter(FVector(0, 0, 350), true, true);
+					Character->LaunchCharacter(FVector(0, 0, VerticalLaunchVelocity), true, true);
 				}
 
 
